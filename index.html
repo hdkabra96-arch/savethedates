@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julia & Charles | Save the Date | 27.02.2027</title>
+    <meta name="description" content="We are getting married! Save the date for Julia & Charles in Roma, Italy on February 27, 2027.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Particle / Sparkles Canvas Overlay -->
+    <canvas id="sparklesCanvas"></canvas>
+
+    <!-- Top Action Bar -->
+    <header class="top-nav-bar">
+        <div class="nav-left">
+            <button id="btnSimulateWhatsapp" class="nav-btn" title="View WhatsApp Invitation Intro">
+                <i class="fab fa-whatsapp"></i> <span>WhatsApp Intro</span>
+            </button>
+        </div>
+        <div class="nav-right">
+            <button id="btnAudioToggle" class="nav-btn music-btn" title="Toggle Background Music">
+                <i class="fas fa-music"></i> <span id="musicBtnText">Music</span>
+            </button>
+            <button id="btnViewRsvps" class="nav-btn icon-only" title="View RSVPs">
+                <i class="fas fa-list-check"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- SECTION 1: WHATSAPP CHAT SIMULATION INTRO -->
+    <section id="whatsappSimSection" class="whatsapp-container hidden">
+        <div class="whatsapp-phone">
+            <div class="phone-header">
+                <button id="btnCloseWhatsapp" class="phone-back-btn"><i class="fas fa-arrow-left"></i></button>
+                <div class="phone-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="phone-contact-info">
+                    <span class="contact-name">Jack Martin</span>
+                    <span class="contact-status">online</span>
+                </div>
+                <div class="phone-actions">
+                    <i class="fas fa-video"></i>
+                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+
+            <div class="phone-body">
+                <div class="date-divider">August 22, 2026</div>
+
+                <div class="system-message">
+                    <i class="fas fa-lock"></i> Messages and calls are end-to-end encrypted.
+                </div>
+
+                <div class="chat-bubble call-bubble received">
+                    <div class="call-icon"><i class="fas fa-phone-slash"></i></div>
+                    <div class="call-info">
+                        <strong>Missed voice call</strong>
+                        <span>Tap to call back 18:28</span>
+                    </div>
+                </div>
+
+                <div class="date-divider">September 23, 2026</div>
+
+                <div class="chat-bubble call-bubble received">
+                    <div class="call-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="call-info">
+                        <strong>Voice call</strong>
+                        <span>21 secs 22:06</span>
+                    </div>
+                </div>
+
+                <div class="date-divider">Thursday</div>
+
+                <!-- Link Card Bubble -->
+                <div class="chat-bubble link-bubble received animate-pop">
+                    <div class="link-card-preview" id="whatsappLinkCard">
+                        <div class="link-thumb">
+                            <img src="assets/photo1.png" alt="Julia & Charles">
+                            <div class="thumb-badge"><i class="fas fa-heart"></i></div>
+                        </div>
+                        <div class="link-details">
+                            <span class="link-site">medchef.my.canva.site</span>
+                            <h4 class="link-title">We are getting married!</h4>
+                            <p class="link-desc">We'd love for you to celebrate this special day with us.</p>
+                            <span class="link-url">https://medchef.my.canva.site/julia-charles3</span>
+                        </div>
+                    </div>
+                    <div class="bubble-caption">
+                        We'd love for you to celebrate this special day with us.
+                        <a href="#" id="linkDirectOpen" class="canva-link">https://medchef.my.canva.site/julia-charles3</a>
+                    </div>
+                    <div class="bubble-meta">20:26 <i class="fas fa-check-double read-ticks"></i></div>
+                </div>
+
+                <div class="tap-instruction">
+                    <i class="fas fa-hand-pointer bounce"></i> Tap the link to open Save the Date!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: MAIN SAVE THE DATE WEBSITE -->
+    <main id="mainWebsiteSection" class="invitation-container">
+
+        <!-- Mobile Phone Frame Header simulation wrapper -->
+        <div class="mobile-viewport">
+            
+            <header class="app-header">
+                <div class="header-status">
+                    <i class="fas fa-check-circle verified-icon"></i>
+                    <span class="header-title">We are getting married!</span>
+                </div>
+                <div class="header-controls">
+                    <button class="icon-btn" id="btnRefreshApp" title="Reset View"><i class="fas fa-rotate-right"></i></button>
+                </div>
+            </header>
+
+            <div class="scrollable-content">
+
+                <!-- TOP HERO VIDEO INVITATION CARD (PLAYS ONCE, NO CONTROLS) -->
+                <div class="video-hero-card">
+                    <div class="video-hero-wrapper" id="videoHeroWrapper">
+                        <video id="heroSaveTheDateVideo" autoplay muted playsinline>
+                            <source src="Save the date.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- 3D RED BOX INTERACTIVE INVITATION (OPENED & SYNCHRONIZED BELOW VIDEO) -->
+                <div class="red-box-wrapper opened" id="redBoxWrapper">
+                    
+                    <!-- THE OUTER RED GIFT BOX COVER -->
+                    <div class="red-box-cover" id="redBoxCover">
+                        <div class="red-box-texture"></div>
+                        <div class="gold-border-frame">
+                            <!-- Heart Doodles -->
+                            <span class="heart-doodle left-heart">♥</span>
+                            <span class="heart-doodle right-heart">♥</span>
+                            
+                            <div class="box-photo-window">
+                                <img src="assets/photo1.png" alt="Julia & Charles Photo">
+                            </div>
+                            <h1 class="box-title-script">Save <br><span class="small-the">the</span><br> Date</h1>
+                            <div class="box-date-badge">27-02-2027</div>
+                        </div>
+
+                        <div class="pull-tab" id="pullTab">
+                            <div class="red-satin-ribbon"></div>
+                            <div class="pull-arrow-container">
+                                <i class="fas fa-chevron-down pulsating-arrow"></i>
+                            </div>
+                            <span class="pull-text">INVITATION DETAILS BELOW</span>
+                        </div>
+                    </div>
+
+                    <!-- THE INSIDE DRAWER CONTENT THAT SLIDES OUT -->
+                    <div class="red-box-drawer" id="redBoxDrawer">
+                        <div class="drawer-header-ribbon">
+                            <span class="sub-headline">WE ARE GETTING MARRIED</span>
+                        </div>
+
+                        <!-- Invitation Cards Assembly -->
+                        <div class="cards-assembly">
+                            
+                            <!-- Card 1: Scalloped Names Card with Calla Lilies -->
+                            <div class="scalloped-card">
+                                <img src="assets/calla_lilies.png" alt="Calla Lilies" class="card-calla-lilies">
+                                <div class="card-inner-border">
+                                    <div class="floral-corner top-left"></div>
+                                    <div class="floral-corner top-right"></div>
+                                    <h2 class="couple-names">Julia <br>&amp;<br> Charles</h2>
+                                    <div class="floral-corner bottom-left"></div>
+                                    <div class="floral-corner bottom-right"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Photobooth Film Strip -->
+                            <div class="photobooth-strip">
+                                <div class="strip-header">SAVE THE DATE</div>
+                                <div class="frame frame-1">
+                                    <img src="assets/photo1.png" alt="Julia & Charles 1">
+                                </div>
+                                <div class="frame frame-2">
+                                    <img src="assets/photo2.png" alt="Julia & Charles 2">
+                                </div>
+                                <div class="frame frame-3">
+                                    <img src="assets/photo3.png" alt="Julia & Charles 3">
+                                </div>
+                                <div class="strip-footer">27.02.2027</div>
+                            </div>
+
+                        </div> <!-- /cards-assembly -->
+
+                        <!-- MEET US IN SECTION -->
+                        <div class="event-details-section">
+                            <h3 class="section-label">MEET US IN</h3>
+                            <h2 class="location-heading">Roma, Italy</h2>
+
+                            <button id="btnViewLocation" class="gold-pill-btn">
+                                <i class="fas fa-map-marker-alt"></i> VIEW LOCATION
+                            </button>
+
+                            <div class="date-time-block">
+                                <p class="date-text">ON SATURDAY, 27 FEB 2027</p>
+                                <p class="time-text">TWELVE THIRTY IN THE AFTERNOON.</p>
+                            </div>
+
+                            <div class="countdown-divider">
+                                <p class="countdown-intro">WE HOPE YOU CAN JOIN US IN...</p>
+
+                                <!-- Live Countdown Display -->
+                                <div class="countdown-timer" id="countdownTimer">
+                                    <div class="time-box">
+                                        <span id="cd-days" class="time-num">142</span>
+                                        <span class="time-label">DAYS</span>
+                                    </div>
+                                    <span class="colon">:</span>
+                                    <div class="time-box">
+                                        <span id="cd-hours" class="time-num">23</span>
+                                        <span class="time-label">HOURS</span>
+                                    </div>
+                                    <span class="colon">:</span>
+                                    <div class="time-box">
+                                        <span id="cd-mins" class="time-num">27</span>
+                                        <span class="time-label">MINS</span>
+                                    </div>
+                                    <span class="colon">:</span>
+                                    <div class="time-box">
+                                        <span id="cd-secs" class="time-num">31</span>
+                                        <span class="time-label">SECS</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Our Story Kraft Paper Card -->
+                            <div class="our-story-card">
+                                <div class="pin-head"></div>
+                                <h3 class="story-title">Our Story</h3>
+                                <p class="story-text">
+                                    We met when we least expected it, and from that moment, everything felt a little brighter. What started with simple conversations soon turned into endless laughter, unforgettable memories, and a love that grew stronger every day. Today, we're excited to begin our greatest adventure yet and can't wait to celebrate this special chapter with the people we love most.
+                                </p>
+                            </div>
+
+                            <!-- RSVP Invitation Call to Action -->
+                            <div class="rsvp-action-block">
+                                <p class="rsvp-subtext">FORMAL INVITATION TO FOLLOW.<br>PLEASE CLICK BELOW TO RSVP</p>
+                                <button id="btnOpenRsvpModal" class="rsvp-main-btn pulse-glow">
+                                    RSVP
+                                </button>
+                                <p class="closing-love-text">
+                                    WE LOOK FORWARD TO CELEBRATING TOGETHER.<br>
+                                    <span class="with-love">WITH LOVE</span>
+                                </p>
+                            </div>
+
+                        </div> <!-- /event-details-section -->
+
+                    </div> <!-- /red-box-drawer -->
+
+                </div> <!-- /red-box-wrapper -->
+
+            </div> <!-- /scrollable-content -->
+
+        </div> <!-- /mobile-viewport -->
+
+    </main>
+
+    <!-- MODAL 2: LOCATION MAP MODAL -->
+    <div id="locationModal" class="modal-overlay hidden">
+        <div class="modal-content location-modal-card">
+            <button class="modal-close-btn" id="btnCloseLocationModal">&times;</button>
+            <h3 class="modal-title"><i class="fas fa-compass"></i> Wedding Location</h3>
+            <h2 class="modal-subtitle">Roma, Italy</h2>
+            <div class="map-wrapper">
+                <iframe 
+                    title="Rome Italy Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190029.0177265113!2d12.395914619717013!3d41.90998597395015!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRome%2C%20Metropolitan%20City%20of%20Rome%20Capital%2C%20Italy!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                    width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="location-info-list">
+                <p><i class="fas fa-calendar-day"></i> <strong>Date:</strong> Saturday, February 27, 2027</p>
+                <p><i class="fas fa-clock"></i> <strong>Time:</strong> 12:30 PM (CET)</p>
+                <p><i class="fas fa-plane-departure"></i> <strong>Airport:</strong> Rome Fiumicino (FCO) / Ciampino (CIA)</p>
+            </div>
+            <a href="https://maps.google.com/?q=Rome,+Italy" target="_blank" rel="noopener noreferrer" class="gold-pill-btn full-width">
+                Open in Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- MODAL 3: RSVP FORM MODAL -->
+    <div id="rsvpModal" class="modal-overlay hidden">
+        <div class="modal-content rsvp-modal-card">
+            <button class="modal-close-btn" id="btnCloseRsvpModal">&times;</button>
+            <h3 class="modal-title">RSVP</h3>
+            <h4 class="rsvp-modal-names">Julia &amp; Charles Wedding</h4>
+            <p class="rsvp-modal-tagline">Please respond by November 30, 2026</p>
+
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-group">
+                    <label for="guestName">Your Full Name *</label>
+                    <input type="text" id="guestName" required placeholder="e.g. Eleanor Vance">
+                </div>
+
+                <div class="form-group">
+                    <label for="guestEmail">Email Address *</label>
+                    <input type="email" id="guestEmail" required placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Will you be attending?</label>
+                    <div class="radio-toggle-group">
+                        <label class="radio-card">
+                            <input type="radio" name="attendance" value="Yes" checked>
+                            <span class="radio-tile"><i class="fas fa-heart"></i> Joyfully Accepts</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="attendance" value="No">
+                            <span class="radio-tile"><i class="fas fa-heart-broken"></i> Regretfully Declines</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="plusOneGroup">
+                    <label for="guestCount">Number of Guests (including yourself)</label>
+                    <select id="guestCount">
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests (+1 Guest)</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dietaryNotes">Dietary Restrictions / Special Notes</label>
+                    <textarea id="dietaryNotes" rows="2" placeholder="e.g. Vegetarian, Gluten-free, or Allergies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="songRequest">Song Request for Reception</label>
+                    <input type="text" id="songRequest" placeholder="What song will get you on the dance floor?">
+                </div>
+
+                <button type="submit" class="gold-pill-btn full-width submit-rsvp-btn">
+                    <i class="fas fa-paper-plane"></i> Submit RSVP
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: RSVP ADMIN / LIST MODAL -->
+    <div id="rsvpListModal" class="modal-overlay hidden">
+        <div class="modal-content rsvp-list-card">
+            <button class="modal-close-btn" id="btnCloseRsvpListModal">&times;</button>
+            <h3 class="modal-title"><i class="fas fa-clipboard-list"></i> RSVP Guest List</h3>
+            <div id="rsvpTableContainer" class="rsvp-table-container">
+                <!-- Dynamically populated -->
+            </div>
+            <button id="btnClearRsvps" class="danger-btn">Clear All RSVPs</button>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
